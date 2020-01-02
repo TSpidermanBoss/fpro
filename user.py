@@ -1,7 +1,8 @@
 from pyrogram import Client, Filters
 import time
 from pyrogram.errors import FloodWait
-bot = "1043241288:AAF7cNXrdFmG0wMRj1AQJczInr9fB32SXdY"
+bot = "912776251:AAHfk6nLsg3jivB6IXT-RnLXY3kKkaJsG0A"
+u = 1056623492
 app = Client(session_name="rr",api_id=814511,api_hash="44462f0f278503255d5cc30941b617a9",bot_token = bot)                                                                                
 @app.on_message(Filters.channel & ~ Filters.edited)
 def main(client, message):
