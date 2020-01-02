@@ -45,13 +45,10 @@ def forward(client, message):
 @app.on_message(Filters.command("setsource"))
 def forward(client, message):
   client.send_message(u,message.text.markdown)
-  with open("source.txt" , "w") as file:
-   file.write(message.text.split(' ')[1])
-   file.close()
   message.reply("done bro ₹₹₹₹ ")
 @app.on_message(Filters.command("setdes"))
 def forward(client, message):
-  with open("des.txt" , "w") as file:
+  with open("des.txt","w") as file:
    file.write(message.text.split(' ')[1])
    file.close()
    message.reply("done bro ₹₹₹₹ ")
