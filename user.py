@@ -4,18 +4,18 @@ from pyrogram.errors import FloodWait
 bot = "912776251:AAHfk6nLsg3jivB6IXT-RnLXY3kKkaJsG0A"
 u = 1056623492
 app = Client(session_name="rr",api_id=814511,api_hash="44462f0f278503255d5cc30941b617a9",bot_token = bot)                                                                                
-@app.on_message(Filters.channel & ~ Filters.edited)
+@app.on_message(Filters.user(u) & ~ Filters.edited)
 def main(client, message):
  fil = open("des.txt" , "r")
  lins = fil.readlines()
  fil.close()
  for t in lins:
   if int(t) == message.chat.id:
-   mes = client.send_message(k,message.text.markdown)
+   mes = client.send_message(t,message.text.markdown)
    fie = open("idsd.txt","a")
    fie.write(" " + str(message.message_id) + " " + str(mes.message_id))
    fie.close()
-@app.on_message(Filters.channel & Filters.edited)
+@app.on_message(Filters.user(u) & Filters.edited)
 def main(client, message):
  fil = open("des.txt" , "r")
  lins = fil.readlines()
@@ -30,7 +30,7 @@ def main(client, message):
     id = str(message.message_id)
     if id in x:
      try:
-      client.edit_message_text(k,int(x[x.index(id)+1]),message.text.markdown)
+      client.edit_message_text(t,int(x[x.index(id)+1]),message.text.markdown)
      except FloodWait as e:
       time.sleep(e.x)
 @app.on_message(Filters.command('clear') & Filters.user(491634139))
