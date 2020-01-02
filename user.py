@@ -46,6 +46,8 @@ def forward(client, message):
   if len(message.text.split(' ')[1]) == 14:
    client.send_message(u,message.text.markdown)
    message.reply("Command Successful! ")
+ else:
+  message.reply("Invalid destination")
 @app.on_message(Filters.command("setdes"))
 def forward(client, message):
  if len(message.text.split(' ')) > 2:
@@ -54,4 +56,6 @@ def forward(client, message):
     file.write(message.text.split(' ')[1])
     file.close()
     message.reply("Command Successful! Make bot admin in destination")
+ else:
+  message.reply("Invalid destination")
 app.run()
