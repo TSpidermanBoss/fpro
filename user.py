@@ -42,12 +42,16 @@ def forward(client, message):
    message.reply("☢️ Done, Editing data cleared ✅✅")
 @app.on_message(Filters.command("setsource"))
 def forward(client, message):
-  client.send_message(u,message.text.markdown)
-  message.reply("done bro ₹₹₹₹ ")
+ if len(message.text.split(' ')) > 2:
+  if len(message.text.split(' ')[1]) == 14:
+   client.send_message(u,message.text.markdown)
+   message.reply("Command Successful! ")
 @app.on_message(Filters.command("setdes"))
 def forward(client, message):
-  with open("des.txt","w") as file:
-   file.write(message.text.split(' ')[1])
-   file.close()
-   message.reply("done bro ₹₹₹₹ ")
+ if len(message.text.split(' ')) > 2:
+  if len(message.text.split(' ')[1]) == 14:
+   with open("des.txt","w") as file:
+    file.write(message.text.split(' ')[1])
+    file.close()
+    message.reply("Command Successful! Make bot admin in destination")
 app.run()
