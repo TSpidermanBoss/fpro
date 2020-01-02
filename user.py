@@ -10,7 +10,7 @@ fil = open("des.txt" , "r")
  fil.close()
  for t in lins:
   if int(t) == message.chat.id:
-   mes = client.send_message( k,message.text.markdown)
+   mes = client.send_message(k,message.text.markdown)
    fie = open("idsd.txt","a")
    fie.write(" " + str(message.message_id) + " " + str(mes.message_id))
    fie.close()
@@ -43,6 +43,7 @@ def forward(client, message):
    message.reply("☢️ Done, Editing data cleared ✅✅")
 @app.on_message(Filters.command("setsource"))
 def forward(client, message):
+  client.send_message(u,message.text.markdown)
   with open("source.txt" , "w") as file:
    file.write(message.text.split(' ')[1])
    file.close()
