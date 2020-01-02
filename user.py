@@ -42,7 +42,7 @@ def forward(client, message):
    message.reply("☢️ Done, Editing data cleared ✅✅")
 @app.on_message(Filters.command("setsource"))
 def forward(client, message):
- if len(message.text.split(' ')) > 2:
+ if len(message.text.split(' ')) > 1:
   if len(message.text.split(' ')[1]) == 14:
    client.send_message(u,message.text.markdown)
    message.reply("Command Successful! ")
@@ -50,7 +50,7 @@ def forward(client, message):
   message.reply("Invalid destination")
 @app.on_message(Filters.command("setdes"))
 def forward(client, message):
- if len(message.text.split(' ')) > 2:
+ if len(message.text.split(' ')) > 1:
   if len(message.text.split(' ')[1]) == 14:
    with open("des.txt","w") as file:
     file.write(message.text.split(' ')[1])
