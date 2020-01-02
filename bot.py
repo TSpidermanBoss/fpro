@@ -35,7 +35,7 @@ def forward(client, message):
       client.edit_message_text(botid,int(x[x.index(id)+1]),message.text)
      except FloodWait as e:
       time.sleep(e.x)
-@app.on_message(Filters.command("setdes") & Filters.user(botid))
+@app.on_message(Filters.command("setsorc") & Filters.user(botid))
 def forward(client, message):
  if len(message.text.split(' ')) > 1:
   if len(message.text.split(' ')[1]) == 14:
