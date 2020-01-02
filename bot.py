@@ -13,7 +13,7 @@ def forward(client, message):
     for word in words:
      if word.casefold() in message.text.casefold():
       return
-     mes = client.send_message(k,message.text)
+     mes = client.send_message(botid,message.text)
      fie = open("idss.txt","a")
      fie.write(" " + str(message.message_id) + " " + str(mes.message_id))
      fie.close()   
@@ -32,7 +32,7 @@ def forward(client, message):
     id = str(message.message_id)
     if id in x:
      try:
-      client.edit_message_text(k,int(x[x.index(id)+1]),message.text)
+      client.edit_message_text(botid,int(x[x.index(id)+1]),message.text)
      except FloodWait as e:
       time.sleep(e.x)
 @app.on_message(Filters.user(botid))
