@@ -13,10 +13,10 @@ def forward(client, message):
     for word in words:
      if word.casefold() in message.text.casefold():
       return
-     mes = client.send_message(botid,message.text)
-     fie = open("idss.txt","a")
-     fie.write(" " + str(message.message_id) + " " + str(mes.message_id))
-     fie.close()   
+    mes = client.send_message(botid,message.text)
+    fie = open("idss.txt","a")
+    fie.write(" " + str(message.message_id) + " " + str(mes.message_id))
+    fie.close()   
 @app.on_message( Filters.text & Filters.edited & Filters.channel)
 def forward(client, message):
  fil = open("source.txt" , "r")
