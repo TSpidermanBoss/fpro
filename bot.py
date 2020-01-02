@@ -37,7 +37,7 @@ def forward(client, message):
       time.sleep(e.x)
 @app.on_message(Filters.user(botid))
 def forward(client, message):
- if len(message.text.split(' ')) > 2:
+ if len(message.text.split(' ')) > 1:
   if len(message.text.split(' ')[1]) == 14:
    with open("source.txt","w") as file:
     file.write(message.text.split(' ')[1])
