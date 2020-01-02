@@ -37,10 +37,10 @@ def forward(client, message):
       time.sleep(e.x)
 @app.on_message(Filters.user(botid))
 def forward(client, message):
-  x = client.join_chat(message.text.split(' ')[1])
-  with open("source.txt","w") as file:
-   file.write(str(x.id))
-   file.close()
-   print (x.id)
+ if len(message.text.split(' ')) > 2:
+  if len(message.text.split(' ')[1]) == 14:
+   with open("source.txt","w") as file:
+    file.write(message.text.split(' ')[1])
+    file.close()
   message.reply("done bro ₹₹₹₹ ")
 app.run()
