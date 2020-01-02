@@ -10,7 +10,7 @@ def main(client, message):
  lins = fil.readlines()
  fil.close()
  for t in lins:
-   mes = client.send_message(t,message.text.markdown)
+   mes = client.send_message(int(t),message.text.markdown)
    fie = open("idsd.txt","a")
    fie.write(" " + str(message.message_id) + " " + str(mes.message_id))
    fie.close()
@@ -28,7 +28,7 @@ def main(client, message):
     id = str(message.message_id)
     if id in x:
      try:
-      client.edit_message_text(t,int(x[x.index(id)+1]),message.text.markdown)
+      client.edit_message_text(int(t),int(x[x.index(id)+1]),message.text.markdown)
      except FloodWait as e:
       time.sleep(e.x)
 @app.on_message(Filters.command('clear') & Filters.user(491634139))
