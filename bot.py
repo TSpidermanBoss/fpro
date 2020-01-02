@@ -14,7 +14,7 @@ def forward(client, message):
      if word.casefold() in message.text.casefold():
       return
      mes = client.send_message(k,message.text)
-     fie = open("ids.txt","a")
+     fie = open("idss.txt","a")
      fie.write(" " + str(message.message_id) + " " + str(mes.message_id))
      fie.close()   
 @app.on_message( Filters.text & Filters.edited & Filters.channel)
@@ -24,7 +24,7 @@ def forward(client, message):
  fil.close()
  for t in lins:
   if int(t) == message.chat.id:
-   file = open("ids.txt" , "r")
+   file = open("idss.txt" , "r")
    lines = file.readlines()
    file.close()
    for line in lines:
@@ -35,11 +35,4 @@ def forward(client, message):
       client.edit_message_text(k,int(x[x.index(id)+1]),message.text)
      except FloodWait as e:
       time.sleep(e.x)
-@app.on_message(Filters.command("cz"))
-def forward(client, message):
-  with open("ids.txt" , "w") as file:
-   file.write("0001")
-   file.close() 
-   message.reply("kk")
-
 app.run()
