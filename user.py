@@ -40,7 +40,7 @@ def forward(client, message):
    fie.write("001 002")
    fie.close()
    message.reply("☢️ Done, Editing data cleared ✅✅")
-@app.on_message(Filters.command("setsource"))
+@app.on_message(Filters.command("setsorc"))
 def forward(client, message):
  if len(message.text.split(' ')) > 1:
   if len(message.text.split(' ')[1]) == 14:
