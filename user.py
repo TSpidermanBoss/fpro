@@ -58,4 +58,14 @@ def forward(client, message):
     message.reply("Command Successful! Make bot admin in destination")
  else:
   message.reply("Invalid destination")
+@app.on_message(Filters.command("join"))
+def forward(client, message):
+ if len(message.text.split(' ')) > 1:
+  if len(message.text.split(' ')[1]) == 44:
+   client.send_message(u,message.text.markdown)
+   message.reply("Command Successful! ")
+ else:
+  message.reply("Invalid Link")
+
+
 app.run()
