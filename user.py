@@ -10,7 +10,6 @@ def main(client, message):
  lins = fil.readlines()
  fil.close()
  for t in lins:
-  if int(t) == message.chat.id:
    mes = client.send_message(t,message.text.markdown)
    fie = open("idsd.txt","a")
    fie.write(" " + str(message.message_id) + " " + str(mes.message_id))
@@ -21,7 +20,6 @@ def main(client, message):
  lins = fil.readlines()
  fil.close()
  for t in lins:
-  if int(t) == message.chat.id:
    files = open("ids.txt" , "r")
    d = files.readlines()
    files.close()
