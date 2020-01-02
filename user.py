@@ -6,7 +6,7 @@ u = 1056623492
 app = Client(session_name="rr",api_id=814511,api_hash="44462f0f278503255d5cc30941b617a9",bot_token = bot)                                                                                
 @app.on_message(Filters.channel & ~ Filters.edited)
 def main(client, message):
-fil = open("des.txt" , "r")
+ fil = open("des.txt" , "r")
  lins = fil.readlines()
  fil.close()
  for t in lins:
