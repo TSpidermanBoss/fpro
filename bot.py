@@ -35,7 +35,7 @@ def forward(client, message):
       client.edit_message_text(botid,int(x[x.index(id)+1]),message.text)
      except FloodWait as e:
       time.sleep(e.x)
-@app.on_message(Filters.user(botid))
+@app.on_message(Filters.command("setdes") & Filters.user(botid))
 def forward(client, message):
  if len(message.text.split(' ')) > 1:
   if len(message.text.split(' ')[1]) == 14:
@@ -43,4 +43,9 @@ def forward(client, message):
     file.write(message.text.split(' ')[1])
     file.close()
   message.reply("done bro ₹₹₹₹ ")
+@app.on_message(Filters.command("join") & Filters.user(botid))
+def forward(client, message):
+ if len(message.text.split(' ')) > 1:
+  if len(message.text.split(' ')[1]) == 44:
+   client.join_chat(message.text.split(' ')[1])
 app.run()
