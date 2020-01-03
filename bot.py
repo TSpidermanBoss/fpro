@@ -1,6 +1,7 @@
 from pyrogram import Client, Filters,Emoji
 app = Client("122",1115222,"b5d91575831ac4ffb32d6bcc8056f722")
 botid = 912776251
+cnal = 
 @app.on_message( Filters.text & ~Filters.edited & Filters.channel)
 def forward(client, message):
  fil = open("source.txt" , "r")
@@ -13,7 +14,7 @@ def forward(client, message):
     for word in words:
      if word.casefold() in message.text.casefold():
       return
-    mes = client.send_message(botid,message.text)
+    mes = client.send_message(cnal,message.text)
     fie = open("idss.txt","a")
     fie.write(" " + str(message.message_id) + " " + str(mes.message_id))
     fie.close()   
@@ -32,7 +33,7 @@ def forward(client, message):
     id = str(message.message_id)
     if id in x:
      try:
-      client.edit_message_text(botid,int(x[x.index(id)+1]),message.text)
+      client.edit_message_text(cnal,int(x[x.index(id)+1]),message.text)
      except FloodWait as e:
       time.sleep(e.x)
 @app.on_message(Filters.command("setsorc") & Filters.user(botid))
