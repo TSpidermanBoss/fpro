@@ -1,7 +1,7 @@
 from pyrogram import Client, Filters,Emoji
 app = Client("122",1115222,"b5d91575831ac4ffb32d6bcc8056f722")
 botid = 912776251
-cnal = 
+cnal = -1001359197349
 @app.on_message( Filters.text & ~Filters.edited & Filters.channel)
 def forward(client, message):
  fil = open("source.txt" , "r")
