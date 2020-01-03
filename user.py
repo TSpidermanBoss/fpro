@@ -21,7 +21,7 @@ def main(client, message):
  lins = fil.readlines()
  fil.close()
  for t in lins:
-   files = open("ids.txt" , "r")
+   files = open("idsd.txt" , "r")
    d = files.readlines()
    files.close()
    for c in d:
