@@ -47,35 +47,145 @@ def ball(bot: Bot, update: Update):
 @user_admin            
 def over(bot: Bot, update: Update):
     if len(update.effective_message.text.split(' ')) > 1:
-      q = float(0.1)
-      p = float(0)
-      s = float(0)
-      while True:
-        x = random.choice(["3","2","4","3","0","2","1","0","2","3","2","4","6"])
-        y = random.choice(['7','8','9'])
-        z = random.choice(['11','12','13'])
-        r = random.choice([x,x,z,x,z,x,x,y,x,x,x,x])
-        if r == z:
-         v = random.choice(["🙅‍♂ No Ball 🙅‍♂","🙆‍♂ Wide Ball 🙆‍♂"])
-         update.message.reply_text("Ball " + str(q)+ "🎾" + ": " + v)
-        if r == x:
-         update.message.reply_text("Ball " + str(q) + "🎾" + ": " + x.replace("2","2⃣ Double 2⃣").replace("3","3⃣ Three 3⃣").replace("4","4⃣ Four 4⃣").replace("6","6⃣ Six Gya Six 6⃣").replace("1","1⃣ Single 1⃣").replace("0","🅾 Dot Ball 🅾"))
-         q = (float(q)*1000 + float(0.1)*1000)/1000
-         s = float(s) + float(r)
-        if r == y:
-         q = (float(q)*1000 + float(0.1)*1000)/1000
-         l = random.choice(["🚾 Run out 🚾","🚾 Catch out 🚾","🚾 Wicket 🚾"])
-         update.message.reply_text("Ball " + str(q) + "🎾" + ": " + l)
-         p = float(p) + float(1)
-         update.message.reply_text(str(s).replace('.0','') + '/' + str(p).replace('.0','') + '🚾')
-         if p == message.text.split(" ")[1]:
-          break
-        if ".6" in str(q):
-         q = float(str(q).replace(".6","")) + float(1)
-         update.message.reply_text('over ' + str(q).replace('.0','') + ' score ' + str(s).replace('.0','') + '/' + str(p).replace('.0',''))  
-        if q == message.text.split(" ")[2]:
-           break
+      x = random.choice(["3","2","4","3","2","1","2","3","2","4","6"])
+      y = random.choice(["🚾 Run out 🚾","🚾 Catch out 🚾","🚾 Wicket 🚾"])
+      z = random.choice(["🅾 Dot Ball 🅾","🙅‍♂ No Ball 🙅‍♂","🙆‍♂ Wide Ball 🙆‍♂"])
+      r = random.choice([x,z,x,z,y,x])
+      a = update.message.reply_text("*Ball 0.1🎾: " + r.replace("2","2⃣ Double 2⃣").replace("3","3⃣ Three 3⃣").replace("4","4⃣ Four 4⃣").replace("6","6⃣ Six Gya Six 6⃣").replace("1","1⃣ Single 1⃣")  + "*",parse_mode=telegram.ParseMode.MARKDOWN)
+      q = float(r.replace("🚾 Run out 🚾","0.1").replace("🚾 Catch out 🚾","0.1").replace("🚾 Wicket 🚾","0.1").replace("🅾 Dot Ball 🅾","0").replace("🙅‍♂ No Ball 🙅‍♂","1").replace("🙆‍♂ Wide Ball 🙆‍♂","1"))*100
+      time.sleep(2)
+      x = random.choice(["3","2","4","3","2","1","2","3","2","4","6"])
+      y = random.choice(["🚾 Run out 🚾","🚾 Catch out 🚾","🚾 Wicket 🚾"])
+      z = random.choice(["🅾 Dot Ball 🅾","🙅‍♂ No Ball 🙅‍♂","🙆‍♂ Wide Ball 🙆‍♂"])
+      r = random.choice([x,z,x,z,y,x])
+      if a.text == "Ball 0.1🎾: 🙅‍♂ No Ball 🙅‍♂" or a.text == "Ball 0.1🎾: 🙆‍♂ Wide Ball 🙆‍♂":
+        a = update.message.reply_text("*Ball 0.1🎾: "  + r.replace("2","2⃣ Double 2⃣").replace("3","3⃣ Three 3⃣").replace("4","4⃣ Four 4⃣").replace("6","6⃣ Six Gya Six 6⃣").replace("1","1⃣ Single 1⃣") + "*",parse_mode=telegram.ParseMode.MARKDOWN)
+        q = float(q) + float(r.replace("🚾 Run out 🚾","0.1").replace("🚾 Catch out 🚾","0.1").replace("🚾 Wicket 🚾","0.1").replace("🅾 Dot Ball 🅾","0").replace("🙅‍♂ No Ball 🙅‍♂","1").replace("🙆‍♂ Wide Ball 🙆‍♂","1"))*100
         time.sleep(2)
+        x = random.choice(["3","2","4","3","2","1","2","3","2","4","6"])
+        y = random.choice(["🚾 Run out 🚾","🚾 Catch out 🚾","🚾 Wicket 🚾"])
+        z = random.choice(["🅾 Dot Ball 🅾"])
+        r = random.choice([x,z,x,z,y,x])
+        if a.text == "Ball 0.1🎾: 🙅‍♂ No Ball 🙅‍♂" or a.text == "Ball 0.1🎾: 🙆‍♂ Wide Ball 🙆‍♂":
+          a = update.message.reply_text("*Ball 0.1🎾: " + r.replace("2","2⃣ Double 2⃣").replace("3","3⃣ Three 3⃣").replace("4","4⃣ Four 4⃣").replace("6","6⃣ Six Gya Six 6⃣").replace("1","1⃣ Single 1⃣") + "*",parse_mode=telegram.ParseMode.MARKDOWN)
+          q = float(q) + float(r.replace("🚾 Run out 🚾","0.1").replace("🚾 Catch out 🚾","0.1").replace("🚾 Wicket 🚾","0.1").replace("🅾 Dot Ball 🅾","0").replace("🙅‍♂ No Ball 🙅‍♂","1").replace("🙆‍♂ Wide Ball 🙆‍♂","1"))*100
+          time.sleep(2)
+          x = random.choice(["3","2","4","3","2","1","2","3","2","4","6"])
+          y = random.choice(["🚾 Run out 🚾","🚾 Catch out 🚾","🚾 Wicket 🚾"])
+          z = random.choice(["🅾 Dot Ball 🅾","🙅‍♂ No Ball 🙅‍♂","🙆‍♂ Wide Ball 🙆‍♂"])
+          r = random.choice([x,z,x,z,y,x])
+      a = update.message.reply_text("*Ball 0.2🎾: " + r.replace("2","2⃣ Double 2⃣").replace("3","3⃣ Three 3⃣").replace("4","4⃣ Four 4⃣").replace("6","6⃣ Six Gya Six 6⃣").replace("1","1⃣ Single 1⃣") + "*",parse_mode=telegram.ParseMode.MARKDOWN)
+      q = float(q) + float(r.replace("🚾 Run out 🚾","0.1").replace("🚾 Catch out 🚾","0.1").replace("🚾 Wicket 🚾","0.1").replace("🅾 Dot Ball 🅾","0").replace("🙅‍♂ No Ball 🙅‍♂","1").replace("🙆‍♂ Wide Ball 🙆‍♂","1"))*100
+      time.sleep(2)
+      x = random.choice(["3","2","4","3","2","1","2","3","2","4","6"])
+      y = random.choice(["🚾 Run out 🚾","🚾 Catch out 🚾","🚾 Wicket 🚾"])
+      z = random.choice(["🅾 Dot Ball 🅾","🙅‍♂ No Ball 🙅‍♂","🙆‍♂ Wide Ball 🙆‍♂"])
+      r = random.choice([x,z,x,z,y,x])
+      if a.text == "Ball 0.2🎾: 🙅‍♂ No Ball 🙅‍♂" or a.text == "Ball 0.2🎾: 🙆‍♂ Wide Ball 🙆‍♂":
+        a = update.message.reply_text("*Ball 0.2🎾: " + r.replace("2","2⃣ Double 2⃣").replace("3","3⃣ Three 3⃣").replace("4","4⃣ Four 4⃣").replace("6","6⃣ Six Gya Six 6⃣").replace("1","1⃣ Single 1⃣") + "*",parse_mode=telegram.ParseMode.MARKDOWN)
+        q = float(q) + float(r.replace("🚾 Run out 🚾","0.1").replace("🚾 Catch out 🚾","0.1").replace("🚾 Wicket 🚾","0.1").replace("🅾 Dot Ball 🅾","0").replace("🙅‍♂ No Ball 🙅‍♂","1").replace("🙆‍♂ Wide Ball 🙆‍♂","1"))*100
+        time.sleep(2)
+        x = random.choice(["3","2","4","3","2","1","2","3","2","4","6"])
+        y = random.choice(["🚾 Run out 🚾","🚾 Catch out 🚾","🚾 Wicket 🚾"])
+        z = random.choice(["🅾 Dot Ball 🅾"])
+        r = random.choice([x,z,x,z,y,x])
+        if a.text == "Ball 0.2🎾: 🙅‍♂ No Ball 🙅‍♂" or a.text == "Ball 0.2🎾: 🙆‍♂ Wide Ball 🙆‍♂":
+          a = update.message.reply_text("*Ball 0.2🎾: " + r.replace("2","2⃣ Double 2⃣").replace("3","3⃣ Three 3⃣").replace("4","4⃣ Four 4⃣").replace("6","6⃣ Six Gya Six 6⃣").replace("1","1⃣ Single 1⃣") + "*",parse_mode=telegram.ParseMode.MARKDOWN)
+          q = float(q) + float(r.replace("🚾 Run out 🚾","0.1").replace("🚾 Catch out 🚾","0.1").replace("🚾 Wicket 🚾","0.1").replace("🅾 Dot Ball 🅾","0").replace("🙅‍♂ No Ball 🙅‍♂","1").replace("🙆‍♂ Wide Ball 🙆‍♂","1"))*100
+          time.sleep(2)
+          x = random.choice(["3","2","4","3","2","1","2","3","2","4","6"])
+          y = random.choice(["🚾 Run out 🚾","🚾 Catch out 🚾","🚾 Wicket 🚾"])
+          z = random.choice(["🅾 Dot Ball 🅾","🙅‍♂ No Ball 🙅‍♂","🙆‍♂ Wide Ball ??‍♂"])
+          r = random.choice([x,z,x,z,y,x])
+      a = update.message.reply_text("*Ball 0.3🎾: " + r.replace("2","2⃣ Double 2⃣").replace("3","3⃣ Three 3⃣").replace("4","4⃣ Four 4⃣").replace("6","6⃣ Six Gya Six 6⃣").replace("1","1⃣ Single 1⃣") + "*",parse_mode=telegram.ParseMode.MARKDOWN)
+      q = float(q) + float(r.replace("🚾 Run out 🚾","0.1").replace("🚾 Catch out 🚾","0.1").replace("🚾 Wicket 🚾","0.1").replace("🅾 Dot Ball 🅾","0").replace("🙅‍♂ No Ball 🙅‍♂","1").replace("🙆‍♂ Wide Ball 🙆‍♂","1"))*100
+      time.sleep(2)
+      x = random.choice(["3","2","4","3","2","1","2","3","2","4","6"])
+      y = random.choice(["🚾 Run out 🚾","🚾 Catch out 🚾","🚾 Wicket 🚾"])
+      z = random.choice(["🅾 Dot Ball 🅾","🙅‍♂ No Ball 🙅‍♂","🙆‍♂ Wide Ball 🙆‍♂"])
+      r = random.choice([x,z,x,z,y,x])
+      if a.text == "Ball 0.3🎾: 🙅‍♂ No Ball 🙅‍♂" or a.text == "Ball 0.3🎾: 🙆‍♂ Wide Ball 🙆‍♂":
+        a = update.message.reply_text("*Ball 0.3🎾: " + r.replace("2","2⃣ Double 2⃣").replace("3","3⃣ Three 3⃣").replace("4","4⃣ Four 4⃣").replace("6","6⃣ Six Gya Six 6⃣").replace("1","1⃣ Single 1⃣") + "*",parse_mode=telegram.ParseMode.MARKDOWN)
+        q = float(q) + float(r.replace("🚾 Run out 🚾","0.1").replace("🚾 Catch out 🚾","0.1").replace("🚾 Wicket 🚾","0.1").replace("🅾 Dot Ball 🅾","0").replace("🙅‍♂ No Ball 🙅‍♂","1").replace("🙆‍♂ Wide Ball 🙆‍♂","1"))*100
+        time.sleep(2)
+        x = random.choice(["3","2","4","3","2","1","2","3","2","4","6"])
+        y = random.choice(["🚾 Run out 🚾","🚾 Catch out 🚾","🚾 Wicket 🚾"])
+        z = random.choice(["🅾 Dot Ball 🅾"])
+        r = random.choice([x,z,x,z,y,x])
+        if a.text == "Ball 0.3🎾: 🙅‍♂ No Ball 🙅‍♂" or a.text == "Ball 0.3🎾: 🙆‍♂ Wide Ball 🙆‍♂":
+          a = update.message.reply_text("*Ball 0.3🎾: " + r.replace("2","2⃣ Double 2⃣").replace("3","3⃣ Three 3⃣").replace("4","4⃣ Four 4⃣").replace("6","6⃣ Six Gya Six 6⃣").replace("1","1⃣ Single 1⃣") + "*",parse_mode=telegram.ParseMode.MARKDOWN)
+          q = float(q) + float(r.replace("🚾 Run out 🚾","0.1").replace("🚾 Catch out 🚾","0.1").replace("🚾 Wicket 🚾","0.1").replace("🅾 Dot Ball 🅾","0").replace("🙅‍♂ No Ball 🙅‍♂","1").replace("🙆‍♂ Wide Ball 🙆‍♂","1"))*100
+          time.sleep(2)
+          x = random.choice(["3","2","4","3","2","1","2","3","2","4","6"])
+          y = random.choice(["🚾 Run out 🚾","🚾 Catch out 🚾","🚾 Wicket 🚾"])
+          z = random.choice(["🅾 Dot Ball 🅾","🙅‍♂ No Ball 🙅‍♂","🙆‍♂ Wide Ball 🙆‍♂"])
+          r = random.choice([x,z,x,z,y,x])
+      a = update.message.reply_text("*Ball 0.4🎾: " + r.replace("2","2⃣ Double 2⃣").replace("3","3⃣ Three 3⃣").replace("4","4⃣ Four 4⃣").replace("6","6⃣ Six Gya Six 6⃣").replace("1","1⃣ Single 1⃣") + "*",parse_mode=telegram.ParseMode.MARKDOWN)
+      q = float(q) + float(r.replace("🚾 Run out 🚾","0.1").replace("🚾 Catch out 🚾","0.1").replace("🚾 Wicket 🚾","0.1").replace("🅾 Dot Ball 🅾","0").replace("🙅‍♂ No Ball 🙅‍♂","1").replace("🙆‍♂ Wide Ball 🙆‍♂","1"))*100
+      time.sleep(2)
+      x = random.choice(["3","2","4","3","2","1","2","3","2","4","6"])
+      y = random.choice(["🚾 Run out 🚾","🚾 Catch out 🚾","🚾 Wicket 🚾"])
+      z = random.choice(["🅾 Dot Ball 🅾","🙅‍♂ No Ball 🙅‍♂","🙆‍♂ Wide Ball 🙆‍♂"])
+      r = random.choice([x,z,x,z,y,x])
+      if a.text == "Ball 0.4🎾: 🙅‍♂ No Ball 🙅‍♂" or a.text == "Ball 0.4🎾: 🙆‍♂ Wide Ball 🙆‍♂":
+        a = update.message.reply_text("*Ball 0.4🎾: " + r.replace("2","2⃣ Double 2⃣").replace("3","3⃣ Three 3⃣").replace("4","4⃣ Four 4⃣").replace("6","6⃣ Six Gya Six 6⃣").replace("1","1⃣ Single 1⃣") + "*",parse_mode=telegram.ParseMode.MARKDOWN)
+        q = float(q) + float(r.replace("🚾 Run out 🚾","0.1").replace("🚾 Catch out 🚾","0.1").replace("🚾 Wicket 🚾","0.1").replace("🅾 Dot Ball 🅾","0").replace("🙅‍♂ No Ball 🙅‍♂","1").replace("🙆‍♂ Wide Ball 🙆‍♂","1"))*100
+        time.sleep(2)
+        x = random.choice(["3","2","4","3","2","1","2","3","2","4","6"])
+        y = random.choice(["🚾 Run out 🚾","🚾 Catch out 🚾","🚾 Wicket 🚾"])
+        z = random.choice(["🅾 Dot Ball 🅾"])
+        r = random.choice([x,z,x,z,y,x])
+        if a.text == "Ball 0.4🎾: 🙅‍♂ No Ball 🙅‍♂" or a.text == "Ball 0.4🎾: 🙆‍♂ Wide Ball 🙆‍♂":
+          a = update.message.reply_text("*Ball 0.4🎾: " + r.replace("2","2⃣ Double 2⃣").replace("3","3⃣ Three 3⃣").replace("4","4⃣ Four 4⃣").replace("6","6⃣ Six Gya Six 6⃣").replace("1","1⃣ Single 1⃣") + "*",parse_mode=telegram.ParseMode.MARKDOWN)
+          q = float(q) + float(r.replace("🚾 Run out 🚾","0.1").replace("🚾 Catch out 🚾","0.1").replace("🚾 Wicket 🚾","0.1").replace("🅾 Dot Ball 🅾","0").replace("🙅‍♂ No Ball 🙅‍♂","1").replace("🙆‍♂ Wide Ball 🙆‍♂","1"))*100
+          time.sleep(2)
+          x = random.choice(["3","2","4","3","2","1","2","3","2","4","6"])
+          y = random.choice(["🚾 Run out 🚾","🚾 Catch out 🚾","🚾 Wicket 🚾"])
+          z = random.choice(["🅾 Dot Ball 🅾","🙅‍♂ No Ball 🙅‍♂","🙆‍♂ Wide Ball 🙆‍♂"])
+          r = random.choice([x,z,x,z,y,x])
+      a = update.message.reply_text("*Ball 0.5🎾: " + r.replace("2","2⃣ Double 2⃣").replace("3","3⃣ Three 3⃣").replace("4","4⃣ Four 4⃣").replace("6","6⃣ Six Gya Six 6⃣").replace("1","1⃣ Single 1⃣") + "*",parse_mode=telegram.ParseMode.MARKDOWN)
+      q = float(q) + float(r.replace("🚾 Run out 🚾","0.1").replace("🚾 Catch out 🚾","0.1").replace("🚾 Wicket 🚾","0.1").replace("🅾 Dot Ball 🅾","0").replace("🙅‍♂ No Ball 🙅‍♂","1").replace("🙆‍♂ Wide Ball 🙆‍♂","1"))*100
+      time.sleep(2)
+      x = random.choice(["3","2","4","3","2","1","2","3","2","4","6"])
+      y = random.choice(["🚾 Run out 🚾","🚾 Catch out 🚾","🚾 Wicket 🚾"])
+      z = random.choice(["🅾 Dot Ball 🅾","🙅‍♂ No Ball 🙅‍♂","🙆‍♂ Wide Ball 🙆‍♂"])
+      r = random.choice([x,z,x,z,y,x])
+      if a.text == "Ball 0.5🎾: 🙅‍♂ No Ball 🙅‍♂" or a.text == "Ball 0.5🎾: 🙆‍♂ Wide Ball 🙆‍♂":
+        a = update.message.reply_text("*Ball 0.5🎾: " + r.replace("2","2⃣ Double 2⃣").replace("3","3⃣ Three 3⃣").replace("4","4⃣ Four 4⃣").replace("6","6⃣ Six Gya Six 6⃣").replace("1","1⃣ Single 1⃣") + "*",parse_mode=telegram.ParseMode.MARKDOWN)
+        q = float(q) + float(r.replace("🚾 Run out 🚾","0.1").replace("🚾 Catch out 🚾","0.1").replace("🚾 Wicket 🚾","0.1").replace("🅾 Dot Ball 🅾","0").replace("🙅‍♂ No Ball 🙅‍♂","1").replace("🙆‍♂ Wide Ball 🙆‍♂","1"))*100
+        time.sleep(2)
+        x = random.choice(["3","2","4","3","2","1","2","3","2","4","6"])
+        y = random.choice(["🚾 Run out 🚾","🚾 Catch out 🚾","🚾 Wicket 🚾"])
+        z = random.choice(["🅾 Dot Ball 🅾"])
+        r = random.choice([x,z,x,z,y,x])
+        if a.text == "Ball 0.5🎾: 🙅‍♂ No Ball 🙅‍♂" or a.text == "Ball 0.5🎾: 🙆‍♂ Wide Ball 🙆‍♂":
+          a = update.message.reply_text("*Ball 0.5🎾: " + r.replace("2","2⃣ Double 2⃣").replace("3","3⃣ Three 3⃣").replace("4","4⃣ Four 4⃣").replace("6","6⃣ Six Gya Six 6⃣").replace("1","1⃣ Single 1⃣") + "*",parse_mode=telegram.ParseMode.MARKDOWN)
+          q = float(q) + float(r.replace("🚾 Run out 🚾","0.1").replace("🚾 Catch out 🚾","0.1").replace("🚾 Wicket 🚾","0.1").replace("🅾 Dot Ball 🅾","0").replace("🙅‍♂ No Ball 🙅‍♂","1").replace("🙆‍♂ Wide Ball 🙆‍♂","1"))*100
+          time.sleep(2)
+          x = random.choice(["3","2","4","3","2","1","2","3","2","4","6"])
+          y = random.choice(["🚾 Run out 🚾","🚾 Catch out 🚾","🚾 Wicket 🚾"])
+          z = random.choice(["🅾 Dot Ball 🅾","🙅‍♂ No Ball 🙅‍♂","🙆‍♂ Wide Ball 🙆‍♂"])
+          r = random.choice([x,z,x,z,y,x])
+      a = update.message.reply_text("*Ball 0.6🎾: " + r.replace("2","2⃣ Double 2⃣").replace("3","3⃣ Three 3⃣").replace("4","4⃣ Four 4⃣").replace("6","6⃣ Six Gya Six 6⃣").replace("1","1⃣ Single 1⃣") + "*",parse_mode=telegram.ParseMode.MARKDOWN)
+      q = float(q) + float(r.replace("🚾 Run out 🚾","0.1").replace("🚾 Catch out 🚾","0.1").replace("🚾 Wicket 🚾","0.1").replace("🅾 Dot Ball 🅾","0").replace("🙅‍♂ No Ball 🙅‍♂","1").replace("🙆‍♂ Wide Ball 🙆‍♂","1"))*100
+      time.sleep(2)
+      x = random.choice(["3","2","4","3","2","1","2","3","2","4","6"])
+      y = random.choice(["🚾 Run out 🚾","🚾 Catch out 🚾","🚾 Wicket 🚾"])
+      z = random.choice(["🅾 Dot Ball 🅾","🙅‍♂ No Ball 🙅‍♂","🙆‍♂ Wide Ball 🙆‍♂"])
+      r = random.choice([x,z,x,z,y,x])
+      if a.text == "Ball 0.6🎾: 🙅‍♂ No Ball 🙅‍♂" or a.text == "Ball 0.6🎾: 🙆‍♂ Wide Ball 🙆‍♂":
+        a = update.message.reply_text("*Ball 0.6🎾: " + r.replace("2","2⃣ Double 2⃣").replace("3","3⃣ Three 3⃣").replace("4","4⃣ Four 4⃣").replace("6","6⃣ Six Gya Six 6⃣").replace("1","1⃣ Single 1⃣") + "*",parse_mode=telegram.ParseMode.MARKDOWN)
+        q = float(q) + float(r.replace("🚾 Run out 🚾","0.1").replace("🚾 Catch out 🚾","0.1").replace("🚾 Wicket 🚾","0.1").replace("🅾 Dot Ball 🅾","0").replace("🙅‍♂ No Ball 🙅‍♂","1").replace("🙆‍♂ Wide Ball 🙆‍♂","1"))*100
+        time.sleep(2)
+        x = random.choice(["3","2","4","3","2","1","2","3","2","4","6"])
+        y = random.choice(["🚾 Run out 🚾","🚾 Catch out 🚾","🚾 Wicket 🚾"])
+        z = random.choice(["🅾 Dot Ball 🅾"])
+        r = random.choice([x,z,x,z,y,x])
+        if a.text == "Ball 0.6🎾: 🙅‍♂ No Ball 🙅‍♂" or a.text == "Ball 0.6🎾: 🙆‍♂ Wide Ball 🙆‍♂":
+          a = update.message.reply_text("*Ball 0.6🎾: " + r.replace("2","2⃣ Double 2⃣").replace("3","3⃣ Three 3⃣").replace("4","4⃣ Four 4⃣").replace("6","6⃣ Six Gya Six 6⃣").replace("1","1⃣ Single 1⃣") + "*")
+          q = float(q) + float(r.replace("🚾 Run out 🚾","0.1").replace("🚾 Catch out 🚾","0.1").replace("🚾 Wicket 🚾","0.1").replace("🅾 Dot Ball 🅾","0").replace("🙅‍♂ No Ball 🙅‍♂","1").replace("🙆‍♂ Wide Ball 🙆‍♂","1"))*100
+          time.sleep(2)
+      update.message.reply_text("*" + update.message.text.split(' ')[1] + " Score :  " + str(float(q)/100).replace('.','/') + " 🅾🅾*",parse_mode=ParseMode.MARKDOWN)
     else:
       update.message.reply_text('Please write over number after command!')
 		
