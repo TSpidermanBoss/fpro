@@ -68,14 +68,14 @@ def over(bot: Bot, update: Update):
          q = (float(q)*1000 + float(0.1)*1000)/1000
          p = float(p) + float(1)
          update.message.reply_text("*" + str(s).replace('.0','') + '/' + str(p).replace('.0','') + '🚾*',parse_mode=ParseMode.MARKDOWN)
-         if p == update.message.text.split(" ")[1]:
-          break
         if ".7" in str(q):
-         q = float(str(q).replace(".7","")) + float(1)
+         q = float(str(q).replace(".7","")) + float(1.0)
          update.message.reply_text('*' + str(q).replace('.0','') + ' OVER '  + str(s).replace('.0','') + '/' + str(p).replace('.0','') + " 🅾🅾*",parse_mode=ParseMode.MARKDOWN)  
-        if q == update.message.text.split(" ")[2]:
+        if s == float(update.message.text.split(" ")[2]):
            break
         time.sleep(2)
+         if p == float(update.message.text.split(" ")[1]):
+          break
     else:
       update.message.reply_text('Please write over number after command!')
 		
