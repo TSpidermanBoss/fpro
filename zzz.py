@@ -80,7 +80,7 @@ def over(bot: Bot, update: Update):
 	 
 	 𝕊𝕔𝕠𝕣𝕖 𝕥𝕙𝕚𝕤 𝕠𝕧𝕖𝕣 : """ + str(s).replace('.0','') +  """ 🏏🏏
 	 
-	 𝕊𝕥𝕣𝕚𝕜𝕖 ℝ𝕒𝕥𝕖 : """ + str(round((s/(float(str(q).replace('.1',''))*6))*100),5) + "*",parse_mode=ParseMode.MARKDOWN)  
+	 𝕊𝕥𝕣𝕚𝕜𝕖 ℝ𝕒𝕥𝕖 : """ + str(round((s/(float(str(q).replace('.1',''))*6))*100,2)) + "*",parse_mode=ParseMode.MARKDOWN)  
 	 f = float(0)
         if str(p).replace('.0','') == update.message.text.split(" ")[2]:
            break
