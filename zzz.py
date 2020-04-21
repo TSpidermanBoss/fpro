@@ -46,7 +46,7 @@ def ball(bot: Bot, update: Update):
 @run_async
 @user_admin            
 def over(bot: Bot, update: Update):
-    if len(update.effective_message.text.split(' ')) > 1:
+    if len(update.effective_message.text.split(' ')) > 2:
       q = float(0.1)
       p = float(0)
       s = float(0)
@@ -67,18 +67,19 @@ def over(bot: Bot, update: Update):
          update.message.reply_text("*Ball " + str(q) + "🎾" + ": " + l + "*",parse_mode=ParseMode.MARKDOWN)
          q = (float(q)*1000 + float(0.1)*1000)/1000
          p = float(p) + float(1)
+         time.sleep(2)
          update.message.reply_text("*" + str(s).replace('.0','') + '/' + str(p).replace('.0','') + '🚾*',parse_mode=ParseMode.MARKDOWN)
         if ".7" in str(q):
          q = (float(str(q).replace(".7",""))*1000 + float(1.1)*1000)/1000
-         update.message.reply_text('*' + str(q).replace('.0','') + ' OVER '  + str(s).replace('.0','') + '/' + str(p).replace('.0','') + " 🅾🅾*",parse_mode=ParseMode.MARKDOWN)  
-        if str(p).replace('.0','') == float(update.message.text.split(" ")[2]):
+         time.sleep(2)
+         update.message.reply_text('*' + str(q).replace('.1','') + ' OVER '  + str(s).replace('.0','') + '/' + str(p).replace('.0','') + " 🅾🅾*",parse_mode=ParseMode.MARKDOWN)  
+        if str(p).replace('.0','') == update.message.text.split(" ")[2]:
            break
-	if str(q).replace('.0','') == update.message.text.split(" ")[1]:
+        if str(q).replace('.1','') == update.message.text.split(" ")[1]:
           break
-        time.sleep(2)
-
+        time.sleep(3) 
     else:
-      update.message.reply_text('Please write over number after command!')
+      update.message.reply_text('Please write over and players number after command! 10 over and 11 players ex. /over 10 11')
 		
 __help__ = """
 ♻️ This is Gamebot created by a wonderful person ✍️.
