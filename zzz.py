@@ -46,7 +46,12 @@ def ball(bot: Bot, update: Update):
 @run_async
 @user_admin            
 def over(bot: Bot, update: Update):
-    if len(update.effective_message.text.split(' ')) > 2:
+    K = update.effective_message.text.split(' ')
+    if len(K) > 1:
+      if len(k) <= 2:
+       k.insert(2,"10")
+      if len(k) <= 3:
+      k.insert(3,"1000")
       q = float(0.1)
       p = float(0)
       s = float(0)
@@ -82,18 +87,71 @@ def over(bot: Bot, update: Update):
 	 
 	 𝕊𝕥𝕣𝕚𝕜𝕖 ℝ𝕒𝕥𝕖 : """ + str(round((s/(float(str(q).replace('.1',''))*6))*100,2)) + "*",parse_mode=ParseMode.MARKDOWN)  
          f = float(0)
-        if str(p).replace('.0','') == update.message.text.split(" ")[2]:
+        if str(p).replace('.0','') == k[2]:
            time.sleep(2)
            update.message.reply_text("🚩🚩 𝕋𝔼𝔸𝕄 𝔸𝕃𝕃 𝕆𝕌𝕋 𝔾𝔸𝕄𝔼 𝕆𝕍𝔼ℝ 🚩🚩")
            break
-        if str(q).replace('.1','') == update.message.text.split(" ")[1]:
+        if str(q).replace('.1','') == k[1]:
+          time.sleep(2)
+          update.message.reply_text("🚩🚩 𝔾𝔸𝕄𝔼 𝕆𝕍𝔼ℝ 🚩🚩")
+        if str(s).replace('.1','') >= k[3]:
+	  update.message.reply_text("*𝕊𝕔𝕠𝕣𝕖 : " + str(s).replace('.0','') + '/' + str(p).replace('.0','') + """
+	  
+	  🏆🏆 𝕋𝕒𝕣𝕘𝕖𝕥 ℂ𝕙𝕒𝕤𝕖𝕕 𝕎𝕠𝕟🏆🏆*""",parse_mode=ParseMode.MARKDOWN)
           time.sleep(2)
           update.message.reply_text("🚩🚩 𝔾𝔸𝕄𝔼 𝕆𝕍𝔼ℝ 🚩🚩")
           break
         time.sleep(3) 
     else:
-      update.message.reply_text('Please write over and players number after command! 10 over and 11 players ex. /over 10 11')
-		
+      update.message.reply_text('Please write over and players number after command! 10 over ex. /over 10 if max wkt is 5 and target is 100 then /over 10 5 100 to perfect results')
+
+@run_async
+@user_admin            
+def superover(bot: Bot, update: Update):
+      q = float(0.1)
+      p = float(0)
+      s = float(0)
+      f = float(0)
+      while True:
+        x = random.choice(["2","1","3","2","1","3","1","2","6","1","4","3","1","6","2","4","3","2","1","2"])
+        y = random.choice(['7','8','9'])
+        z = random.choice(['11','12','13'])
+        r = random.choice([x,x,z,x,z,x,x,y,x,x,x,x])
+        if r == z:
+         v = random.choice(["🙅‍♂ No Ball 🙅‍♂","🙆‍♂ Wide Ball 🙆‍♂"])
+         update.message.reply_text("*Ball " + str(q)+ "🎾" + ": " + v + "*",parse_mode=ParseMode.MARKDOWN)
+         f = float(f) + float(1)
+         s = float(s) + float(1)
+        if r == x:
+         update.message.reply_text("*Ball " + str(q) + "🎾: " + x.replace("2","2⃣ Double 2⃣").replace("3","3⃣ Three 3⃣").replace("4","4⃣ Four 4⃣").replace("6","6⃣ Six Gya Six 6⃣").replace("1","1⃣ Single 1⃣").replace("0","🅾 Dot Ball 🅾")+ "*",parse_mode=ParseMode.MARKDOWN)
+         q = (float(q)*1000 + float(0.1)*1000)/1000
+         s = float(s) + float(r)
+         f = float(f) + float(r)
+        if r == y:
+         l = random.choice(["🚾 Run out 🚾","🚾 Catch out 🚾","🚾 Wicket 🚾"])
+         update.message.reply_text("*Ball " + str(q) + "🎾" + ": " + l + "*",parse_mode=ParseMode.MARKDOWN)
+         q = (float(q)*1000 + float(0.1)*1000)/1000
+         p = float(p) + float(1)
+         time.sleep(2)
+         update.message.reply_text("*" + str(s).replace('.0','') + '/' + str(p).replace('.0','') + '🚾*',parse_mode=ParseMode.MARKDOWN)
+        if ".7" in str(q):
+         q = (float(str(q).replace(".7",""))*1000 + float(1.1)*1000)/1000
+         time.sleep(2)
+         update.message.reply_text('*' + str(q).replace('.1','') + ' 𝕆𝕍𝔼ℝ '  + str(s).replace('.0','') + '/' + str(p).replace('.0','') + """ 🅾🅾
+	 
+	 𝕊𝕔𝕠𝕣𝕖 𝕥𝕙𝕚𝕤 𝕠𝕧𝕖𝕣 : """ + str(f).replace('.0','') +  """ 🏏🏏
+	 
+	 𝕊𝕥𝕣𝕚𝕜𝕖 ℝ𝕒𝕥𝕖 : """ + str(round((s/(float(str(q).replace('.1',''))*6))*100,2)) + "*",parse_mode=ParseMode.MARKDOWN)  
+         f = float(0)
+        if str(p).replace('.0','') == '2':
+           time.sleep(2)
+           update.message.reply_text("🚩🚩 𝕋𝔼𝔸𝕄 𝔸𝕃𝕃 𝕆𝕌𝕋 𝔾𝔸𝕄𝔼 𝕆𝕍𝔼ℝ 🚩🚩")
+           break
+        if str(q).replace('.1','') == "1":
+          time.sleep(2)
+          update.message.reply_text("🚩🚩 𝔾𝔸𝕄𝔼 𝕆𝕍𝔼ℝ 🚩🚩")
+        time.sleep(3) 
+
 __help__ = """
 ♻️ This is Gamebot created by a wonderful person ✍️.
 My commands :
@@ -117,10 +175,12 @@ All command exist only Admins in Super groups ✍️.
 __mod_name__ = "Extras"
 
 OVER_HANDLER = DisableAbleCommandHandler("over", over)
+superOVER_HANDLER = DisableAbleCommandHandler("superover", superover)
 TOSS_HANDLER = DisableAbleCommandHandler("toss",toss)
 BALL_HANDLER = DisableAbleCommandHandler("ball",ball)
 SHOW_HANDLER = DisableAbleCommandHandler("sw",show)
 dispatcher.add_handler(SHOW_HANDLER)
 dispatcher.add_handler(OVER_HANDLER)
+dispatcher.add_handler(superOVER_HANDLER)
 dispatcher.add_handler(TOSS_HANDLER)
 dispatcher.add_handler(BALL_HANDLER)
