@@ -22,29 +22,24 @@ def show(bot,update):
   member = update.effective_message.chat.get_member(update.effective_message.from_user.id)
   if member.status == "administrator" or member.status=='creator':
    if len(update.effective_message.text.split(' ')) > 1:
-     p = ["2","3","4","5","6","7","8","9","10","𝔸","ℚ","𝕁","𝕂"]
-     q = [ "♠️","♣️","♥️","♦️"]
-     a = random.choice(p) + random.choice(q)
-     b = random.choice(p) + random.choice(q)
-     c = random.choice(p) + random.choice(q)
-     d = random.choice(p) + random.choice(q)
-     e = random.choice(p) + random.choice(q)
-     f = random.choice(p) + random.choice(q)
-     while True:
-      if a != b != c != d != e != f:
-            update.message.reply_text("*Player " + update.message.text.split(" ")[1]+ """ Cards:
+     z = ["2♠️","3♠️","4♠️","5♠️","6♠️","7♠️","8♠️","9♠️","10♠️","𝔸♠️","ℚ♠️","𝕁♠️","𝕂♠️","2♣️","3♣️","4♣️","5♣️","6♣️","7♣️","8♣️","9♣️","10♣️","𝔸♣️","ℚ♣️","𝕁♣️","𝕂♣️","2♥️","3♥️","4♥️","5♥️","6♥️","7♥️","8♥️","9♥️","10♥️","𝔸♥️","ℚ♥️","𝕁♥️","𝕂♥️","2♦️","3♦️","4♦️","5♦️","6♦️","7♦️","8♦️","9♦️","10♦️","𝔸♦️","ℚ♦️","𝕁♦️","𝕂♦️"]
+     a = random.choice(z)
+     z.remove(a)
+     b = random.choice(z)
+     z.remove(b)
+     c = random.choice(z)
+     z.remove(c)
+     d = random.choice(z)
+     z.remove(d)
+     e = random.choice(z)
+     z.remove(e)
+     f = random.choice(z)           
+     update.message.reply_text("*Player " + update.message.text.split(" ")[1]+ """ Cards:
 
   """  + a  + "    "+ b + "     " + c + "*", parse_mode=ParseMode.MARKDOWN )	
-            update.message.reply_text("*Player " + update.message.text.split(" ")[2]+ """ Cards:
+     update.message.reply_text("*Player " + update.message.text.split(" ")[2]+ """ Cards:
 
-  """  + d + "     "+ e + "     " + f + "*", parse_mode=ParseMode.MARKDOWN )	
-            break
-      else:
-       b = random.choice(p) + random.choice(q)
-       c = random.choice(p) + random.choice(q)
-       d = random.choice(p) + random.choice(q)
-       e = random.choice(p) + random.choice(q)
-       f = random.choice(p) + random.choice(q)	
+  """  + d + "     "+ e + "     " + f + "*", parse_mode=ParseMode.MARKDOWN )
    else:
         update.message.reply_text('Please write username {without @} after command!')
 		
