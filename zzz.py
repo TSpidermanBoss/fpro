@@ -20,16 +20,38 @@ def toss(bot: Bot, update: Update):
 @run_async
 def show(bot: Bot, update: Update):
    if len(update.effective_message.text.split(' ')) > 1:
-      a = random.choice(["1","2","3","4","5","6","7","8","9","10","🅐","🅠","🅚","🅙"]) + random.choice([ "♠️","♣️","♥️","♦️"])
-      b = random.choice(["1","2","3","4","5","6","7","8","9","10","🅐","🅠","🅚","🅙"]) + random.choice([ "♠️","♣️","♥️","♦️"])
-      c = random.choice(["1","2","3","4","5","6","7","8","9","10","🅐","🅠","🅚","🅙"]) + random.choice([ "♠️","♣️","♥️","♦️"])
-      update.message.reply_text("𝓟𝓵𝓪𝔂𝓮𝓻 " + update.message.text.split(" ")[1]+ """ 𝓒𝓪𝓻𝓭𝓼:
+     p = ["1","2","3","4","5","6","7","8","9","10","🅐","🅠","🅚","🅙"]
+     q = [ "♠️","♣️","♥️","♦️"]
+     a = random.choice(p) + random.choice(q)
+     while True:
+        b = random.choice(p) + random.choice(q)
+        if not b==a:
+          break
+        else:
+          b = random.choice(p) + random.choice(q)
+     while True:
+        c = random.choice(p) + random.choice(q)
+        if not c == a and not c == b:
+          break
+        else:
+          b = random.choice(p) + random.choice(q)	
+     update.message.reply_text("𝓟𝓵𝓪𝔂𝓮𝓻 " + update.message.text.split(" ")[1]+ """ 𝓒𝓪𝓻𝓭𝓼:
+""" + "{ " + a + " }" + "  { "+ b + " }  { " + c + " }", parse_mode=ParseMode.MARKDOWN )	
+     a = random.choice(p) + random.choice(q)
+     while True:
+        b = random.choice(p) + random.choice(q)
+        if not b==a:
+          break
+        else:
+          b = random.choice(p) + random.choice(q)
+     while True:
+        c = random.choice(p) + random.choice(q)
+        if not c == a and not c == b:
+          break
+        else:
+          b = random.choice(p) + random.choice(q)	
+     update.message.reply_text("𝓟𝓵𝓪𝔂𝓮𝓻 " + update.message.text.split(" ")[1]+ """ 𝓒𝓪𝓻𝓭𝓼:
 """ + "{ " + a + " }" + "  { "+ b + " }  { " + c + " }", parse_mode=ParseMode.MARKDOWN )
-      a = random.choice(["1","2","3","4","5","6","7","8","9","10","🅐","🅠","🅚","🅙"]) + random.choice([ "♠️","♣️","♥️","♦️"])
-      b = random.choice(["1","2","3","4","5","6","7","8","9","10","🅐","🅠","🅚","🅙"]) + random.choice([ "♠️","♣️","♥️","♦️"])
-      c = random.choice(["1","2","3","4","5","6","7","8","9","10","🅐","🅠","🅚","🅙"]) + random.choice([ "♠️","♣️","♥️","♦️"])
-      update.message.reply_text("𝓟𝓵𝓪𝔂𝓮𝓻 " + update.message.text.split(" ")[2] + """ 𝓒𝓪𝓻𝓭𝓼:
-""" + "{ " + a + " }" + "  { "+ b + " }  { " + c + " }" , parse_mode=ParseMode.MARKDOWN )
    else:
         update.message.reply_text('Please write username {without @} after command!')
 		
