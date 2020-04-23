@@ -1,83 +1,75 @@
-import random, re
-import time
-from random import randint
+import logging
 import telegram
-from telegram import Message, Update, Bot, User,ParseMode
-from telegram import MessageEntity
-from telegram.ext import Filters, MessageHandler, run_async
-from tg_bot.modules.helper_funcs.chat_status import user_admin
-from tg_bot import dispatcher
-from tg_bot.modules.disable import DisableAbleCommandHandler
+import time
+import random
+from telegram import ParseMode
+from telegram.ext import MessageHandler, Filters, Updater
+from telegram.ext import CommandHandler
+updater = Updater(token='1179939004:AAFb61k5P_tjBY1fZkA47LcnhmXPcW-3XcA')
+logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+                     level=logging.INFO)
 
-@run_async
-@user_admin
-def toss(bot: Bot, update: Update):
+def toss(bot,update):
+   member = update.effective_message.chat.get_member(update.effective_message.from_user.id)
+   if member.status == "administrator" or member.status=='creator':
       x = random.choice(['💫 Result : Head', '💫 Result :Tail '])
       y = random.choice(['💫 Result : Head', '💫 Result :Tail ','💫 Result : Head','💫 Result :Tail '])
       z = random.choice(['💫 Result :Tail ','💫 Result : Head','💫 Result :Tail ', '💫 Result : Head'])
       r = random.choice([x,z,y])
       a = update.message.reply_text("*" + r  + "*",parse_mode=telegram.ParseMode.MARKDOWN)
-@run_async
-def show(bot: Bot, update: Update):
-   if len(update.effective_message.text.split(' ')) > 1:
-p = ["1","2","3","4","5","6","7","8","9","10","🅐","🅠","🅚","🅙"]
-q = [ "♠️","♣️","♥️","♦️"]
-a = random.choice(p) + random.choice(q)
-b = random.choice(p) + random.choice(q)
-c = random.choice(p) + random.choice(q)
-d = random.choice(p) + random.choice(q)
-e = random.choice(p) + random.choice(q)
-f = random.choice(p) + random.choice(q)
 
-while True:
- if a != b != c != d != e != f:
-  print(a + b +c+d+e+f )
-  break
- else:
-  b = random.choice(p) + random.choice(q)
-  c = random.choice(p) + random.choice(q)
-  d = random.choice(p) + random.choice(q)
-  e = random.choice(p) + random.choice(q)
-  f = random.choice(p) + random.choice(q)	
-     update.message.reply_text("𝓟𝓵𝓪𝔂𝓮𝓻 " + update.message.text.split(" ")[1]+ """ 𝓒𝓪𝓻𝓭𝓼:
-""" + "{ " + a + " }" + "  { "+ b + " }  { " + c + " }", parse_mode=ParseMode.MARKDOWN )	
+def show(bot,update):
+  member = update.effective_message.chat.get_member(update.effective_message.from_user.id)
+  if member.status == "administrator" or member.status=='creator':
+   if len(update.effective_message.text.split(' ')) > 1:
+     p = ["2","3","4","5","6","7","8","9","10","𝔸","ℚ","𝕁","𝕂"]
+     q = [ "♠️","♣️","♥️","♦️"]
      a = random.choice(p) + random.choice(q)
+     b = random.choice(p) + random.choice(q)
+     c = random.choice(p) + random.choice(q)
+     d = random.choice(p) + random.choice(q)
+     e = random.choice(p) + random.choice(q)
+     f = random.choice(p) + random.choice(q)
      while True:
-        b = random.choice(p) + random.choice(q)
-        if not b==a:
-          break
-        else:
-          b = random.choice(p) + random.choice(q)
-     while True:
-        c = random.choice(p) + random.choice(q)
-        if not c == a and not c == b:
-          break
-        else:
-          b = random.choice(p) + random.choice(q)	
-     update.message.reply_text("𝓟𝓵𝓪𝔂𝓮𝓻 " + update.message.text.split(" ")[1]+ """ 𝓒𝓪𝓻𝓭𝓼:
-""" + "{ " + a + " }" + "  { "+ b + " }  { " + c + " }", parse_mode=ParseMode.MARKDOWN )
+      if a != b != c != d != e != f:
+            update.message.reply_text("*Player " + update.message.text.split(" ")[1]+ """ Cards:
+
+  """  + a  + "    "+ b + "     " + c + "*", parse_mode=ParseMode.MARKDOWN )	
+            update.message.reply_text("*Player " + update.message.text.split(" ")[2]+ """ Cards:
+
+  """  + d + "     "+ e + "     " + f + "*", parse_mode=ParseMode.MARKDOWN )	
+            break
+      else:
+       b = random.choice(p) + random.choice(q)
+       c = random.choice(p) + random.choice(q)
+       d = random.choice(p) + random.choice(q)
+       e = random.choice(p) + random.choice(q)
+       f = random.choice(p) + random.choice(q)	
    else:
         update.message.reply_text('Please write username {without @} after command!')
 		
-@run_async
-@user_admin            
-def ball(bot: Bot, update: Update):
+def ball(bot,update):
+   member = update.effective_message.chat.get_member(update.effective_message.from_user.id)
+   if member.status == "administrator" or member.status=='creator':
     if len(update.effective_message.text.split(' ')) > 1:
       x = random.choice(["3","2","4","3","2","1","2","3","2","4","6"])
       y = random.choice(["🚾 Run out 🚾","🚾 Catch out 🚾","🚾 Wicket 🚾"])
       z = random.choice(["🅾 Dot Ball 🅾","🙅‍♂ No Ball 🙅‍♂","🙆‍♂ Wide Ball 🙆‍♂"])
       r = random.choice([x,z,x,z,y,x])
       update.message.reply_text("*Ball 0.{} 🎾: ".format(update.message.text.split(' ')[1]) + r.replace("2","2⃣ Double 2⃣").replace("3","3⃣ Three 3⃣").replace("4","4⃣ Four 4⃣").replace("6","6⃣ Six Gya Six 6⃣").replace("1","1⃣ Single 1⃣")  + "*" ,parse_mode=telegram.ParseMode.MARKDOWN)
+    else:
+      update.message.reply_text('Please write ball number after command!')
 
-@run_async
-@user_admin            
-def over(bot: Bot, update: Update):
-    K = update.effective_message.text.split(' ')
-    if len(K) > 1:
+            
+def over(bot,update):
+   member = update.effective_message.chat.get_member(update.effective_message.from_user.id)
+   if member.status == "administrator" or member.status=='creator':
+    k = update.effective_message.text.split(' ')
+    if len(k) > 1:
       if len(k) <= 2:
        k.insert(2,"10")
       if len(k) <= 3:
-      k.insert(3,"1000")
+       k.insert(3,"1000")
       q = float(0.1)
       p = float(0)
       s = float(0)
@@ -113,6 +105,14 @@ def over(bot: Bot, update: Update):
 	 
 	 𝕊𝕥𝕣𝕚𝕜𝕖 ℝ𝕒𝕥𝕖 : """ + str(round((s/(float(str(q).replace('.1',''))*6))*100,2)) + "*",parse_mode=ParseMode.MARKDOWN)  
          f = float(0)
+        if int(str(s).replace('.0','')) >= int(k[3]):
+          time.sleep(2)
+          update.message.reply_text("* 𝕊𝕔𝕠𝕣𝕖 : " + str(s).replace('.0','') + '/' + str(p).replace('.0','') + """ 📟📟
+              
+   🏆 𝕋𝕒𝕣𝕘𝕖𝕥 ℂ𝕙𝕒𝕤𝕖𝕕 𝕎𝕠𝕟 🎉* """ , parse_mode=ParseMode.MARKDOWN)
+          time.sleep(2)
+          update.message.reply_text("🚩🚩 𝔾𝔸𝕄𝔼 𝕆𝕍𝔼ℝ 🚩🚩")
+          break
         if str(p).replace('.0','') == k[2]:
            time.sleep(2)
            update.message.reply_text("🚩🚩 𝕋𝔼𝔸𝕄 𝔸𝕃𝕃 𝕆𝕌𝕋 𝔾𝔸𝕄𝔼 𝕆𝕍𝔼ℝ 🚩🚩")
@@ -120,20 +120,14 @@ def over(bot: Bot, update: Update):
         if str(q).replace('.1','') == k[1]:
           time.sleep(2)
           update.message.reply_text("🚩🚩 𝔾𝔸𝕄𝔼 𝕆𝕍𝔼ℝ 🚩🚩")
-        if str(s).replace('.1','') >= k[3]:
-	  update.message.reply_text("*𝕊𝕔𝕠𝕣𝕖 : " + str(s).replace('.0','') + '/' + str(p).replace('.0','') + """
-	  
-	  🏆🏆 𝕋𝕒𝕣𝕘𝕖𝕥 ℂ𝕙𝕒𝕤𝕖𝕕 𝕎𝕠𝕟🏆🏆*""",parse_mode=ParseMode.MARKDOWN)
-          time.sleep(2)
-          update.message.reply_text("🚩🚩 𝔾𝔸𝕄𝔼 𝕆𝕍𝔼ℝ 🚩🚩")
           break
         time.sleep(3) 
     else:
       update.message.reply_text('Please write over and players number after command! 10 over ex. /over 10 if max wkt is 5 and target is 100 then /over 10 5 100 to perfect results')
-
-@run_async
-@user_admin            
-def superover(bot: Bot, update: Update):
+    
+def superover(bot,update):
+   member = update.effective_message.chat.get_member(update.effective_message.from_user.id)
+   if member.status == "administrator" or member.status=='creator':
       q = float(0.1)
       p = float(0)
       s = float(0)
@@ -176,37 +170,17 @@ def superover(bot: Bot, update: Update):
         if str(q).replace('.1','') == "1":
           time.sleep(2)
           update.message.reply_text("🚩🚩 𝔾𝔸𝕄𝔼 𝕆𝕍𝔼ℝ 🚩🚩")
+          break
         time.sleep(3) 
-
-__help__ = """
-♻️ This is Gamebot created by a wonderful person ✍️.
-My commands :
-👉 For show user cards
-1. /show {username}
-👉 for sps
-2. /sps
-👉 for even odd
-3. /dice or /roll {range}
-👉 for double roll
-4. /droll {range} or /dice2
-👉 for decision
-5. /decide
-👉 for roulette
-6. /rolls
-🤜Lucky 7
-7. /luck
-All command exist only Admins in Super groups ✍️.
-"""
-
-__mod_name__ = "Extras"
-
-OVER_HANDLER = DisableAbleCommandHandler("over", over)
-superOVER_HANDLER = DisableAbleCommandHandler("superover", superover)
-TOSS_HANDLER = DisableAbleCommandHandler("toss",toss)
-BALL_HANDLER = DisableAbleCommandHandler("ball",ball)
-SHOW_HANDLER = DisableAbleCommandHandler("sw",show)
+dispatcher = updater.dispatcher
+OVER_HANDLER = CommandHandler("over", over)
+SOVER_HANDLER = CommandHandler("superover", superover)
+TOSS_HANDLER = CommandHandler("toss",toss)
+BALL_HANDLER = CommandHandler("ball",ball)
+SHOW_HANDLER = CommandHandler("sw",show)
 dispatcher.add_handler(SHOW_HANDLER)
 dispatcher.add_handler(OVER_HANDLER)
-dispatcher.add_handler(superOVER_HANDLER)
+dispatcher.add_handler(SOVER_HANDLER)
 dispatcher.add_handler(TOSS_HANDLER)
 dispatcher.add_handler(BALL_HANDLER)
+updater.start_polling()
