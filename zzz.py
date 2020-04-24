@@ -3,12 +3,12 @@ import telegram
 import time
 import random
 from telegram import ParseMode
-from telegram.ext import MessageHandler, Filters, Updater
+from telegram.ext import MessageHandler, Filters, Updater,run_async
 from telegram.ext import CommandHandler
-updater = Updater(token='1179939004:AAFb61k5P_tjBY1fZkA47LcnhmXPcW-3XcA')
+updater = Updater(token='663574960:AAET5CFkDUmCaxrONbFcVh_TJzKWtOxdWlo')
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                      level=logging.INFO)
-
+@run_async
 def toss(bot,update):
    member = update.effective_message.chat.get_member(update.effective_message.from_user.id)
    if member.status == "administrator" or member.status=='creator':
@@ -17,7 +17,7 @@ def toss(bot,update):
       z = random.choice(['💫 Result :Tail ','💫 Result : Head','💫 Result :Tail ', '💫 Result : Head'])
       r = random.choice([x,z,y])
       a = update.message.reply_text("*" + r  + "*",parse_mode=telegram.ParseMode.MARKDOWN)
-
+@run_async
 def show(bot,update):
   member = update.effective_message.chat.get_member(update.effective_message.from_user.id)
   if member.status == "administrator" or member.status=='creator':
@@ -42,7 +42,7 @@ def show(bot,update):
   """  + d + "     "+ e + "     " + f + "*", parse_mode=ParseMode.MARKDOWN )
    else:
         update.message.reply_text('Please write username {without @} after command!')
-		
+@run_async
 def ball(bot,update):
    member = update.effective_message.chat.get_member(update.effective_message.from_user.id)
    if member.status == "administrator" or member.status=='creator':
@@ -55,7 +55,7 @@ def ball(bot,update):
     else:
       update.message.reply_text('Please write ball number after command!')
 
-            
+@run_async           
 def over(bot,update):
    member = update.effective_message.chat.get_member(update.effective_message.from_user.id)
    if member.status == "administrator" or member.status=='creator':
@@ -119,7 +119,8 @@ def over(bot,update):
         time.sleep(3) 
     else:
       update.message.reply_text('Please write over and players number after command! 10 over ex. /over 10 if max wkt is 5 and target is 100 then /over 10 5 100 to perfect results')
-    
+ 
+@run_async   
 def superover(bot,update):
    member = update.effective_message.chat.get_member(update.effective_message.from_user.id)
    if member.status == "administrator" or member.status=='creator':
